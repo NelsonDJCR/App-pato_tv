@@ -15,6 +15,7 @@
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
         $(document).ready(function () {
+            UrlExists()
             var search = $(location).attr('search')
             if (search.split('=')[1]) {
                 loadVideos(`/tvo/get-videos?tv=${search.split('=')[1]}`)
@@ -71,6 +72,27 @@
                 return e
             });
         }
+
+        //https://tv.nelsondjcr.com/videos/test.mp4
+
+        function UrlExists() {
+
+            $.ajax({
+                url: 'https://tv.nelsondjcr.com/videos/test.mp4',
+                type: 'HEAD',
+                error: function () {
+                    console.log('file not exists')
+                },
+                success: function () {
+                    console.log('file exists')
+                }
+            });
+
+
+        }
+
+
+
     </script>
     <style>
         * {
