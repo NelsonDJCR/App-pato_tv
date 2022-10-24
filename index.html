@@ -25,7 +25,7 @@
         var next = 0;
         function videoend(video_end, total_videos, actuallity_videos) {
             UrlExists()
-            console.log('video end:__', video_end + "..." + total_videos)
+            //console.log('video end:__', video_end + "..." + total_videos)
             next = video_end + 1;
 
             if (video_end == (total_videos - 1)) {
@@ -38,7 +38,7 @@
         }
 
         function loadVideos(url) {
-            console.log('loadVideos')
+            //console.log('loadVideos')
             $('body').css('cursor', 'none');
             $('#icon_tv').focus()
             $('.container-videos').html(``)
@@ -55,7 +55,7 @@
         }
 
         function play(video_actual) {
-            console.log('play', video_actual)
+            //console.log('play', video_actual)
             var vid = document.getElementById("video" + video_actual);
             vid.currentTime = 0;
             $('.video' + video_actual).css('display', 'none');
@@ -67,7 +67,7 @@
         }
 
         function verifyUpdates() {
-            console.log('verifyUpdates')
+            //console.log('verifyUpdates')
             $.get('/video_cuantity').done(function (e) {
                 return e
             });
