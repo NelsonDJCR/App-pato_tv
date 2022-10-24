@@ -11,18 +11,7 @@
 </head>
 
 <body>
-    <!-- {{-- <img id="icon_tv" src="{{ asset('https://i.postimg.cc/ZnKCfH09/logo-final.png') }}" alt=""> --}} -->
-    <!-- {{-- <img class="icon_menu animate__animated  animate__backInDown" src="https://i.postimg.cc/WpyWbV82/image.jpg"> --}} -->
-    <!-- <div class="selector_video">
-        <div class="container_tvs">
-            <p onclick="window.location = '/tv?tv=mandala';">Tv 1</p>
-            <p onclick="window.location = '/tv?tv=prime';">Tv 2</p>
-              <p onclick="window.location = '/tv?tv=amolatina';">AmoLatina </p> 
-        </div>
-    </div> -->
-    <div class="container-videos">
-
-    </div>
+    <div class="container-videos"></div>
     <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -33,19 +22,10 @@
                 loadVideos('/tvo/get-videos')
             }
         });
-
-
         var next = 0;
         function videoend(video_end, total_videos, actuallity_videos) {
             console.log('video end:__', video_end + "..." + total_videos)
             next = video_end + 1;
-
-            // $.get('/video_cuantity').done(function(e) {
-            //     console.log(`actuallity_videos: ${actuallity_videos} == ${e}`);
-            //     if (actuallity_videos != e) {
-            //         location.reload()
-            //     }
-            // });
 
             if (video_end == (total_videos - 1)) {
                 $('.video' + video_end).css('display', 'none');
@@ -57,12 +37,10 @@
         }
 
         function loadVideos(url) {
-
             console.log('loadVideos')
             $('body').css('cursor', 'none');
             $('#icon_tv').focus()
             $('.container-videos').html(``)
-
             $('.container-videos').append(`
                 <video id="video0"  class="videop video0"  muted controls style="display:none;" data-id="1" onended="videoend(0, 2,2)">
                     <source src="./videos/test.mp4" type="video/mp4">
@@ -71,46 +49,9 @@
                     <source src="./videos/big_buck_bunny_720p_1mb.mp4" type="video/mp4" />
                 </video>
                 `)
-
             $('.video0').css('display', 'block').get(0).play()
             return false;
-
-            // $('body').css('cursor', 'none');
-            //$('#icon_tv').focus()
-            //$('.container-videos').html(``)
-            //$.get(url).done(function(e) {
-            //    var total_videos = e.videos.length - 1;
-            //    var actuallity_videos = e.actuallity_videos;
-            //    var postition_actual = 1;
-            //    var pos = 0;
-            //    $.each(e.videos, function(key, i) {
-            //
-            //        $('.container-videos').append(`
-            //        <video id="video${pos}"  class="videop video${pos}"  muted style="display:none;" data-id="${pos}" onended="videoend(${pos}, ${total_videos},${actuallity_videos})">
-            //            <source src="/storage/${i.route}" type="video/mp4" />
-            //            </video>
-            //            `)
-            //        pos = pos + 1;
-            //
-            //    })
-            //    $('.video0').css('display', 'block').get(0).play()
-            //    return false;
-            //});
-
         }
-
-        //$('.selector_video').mouseenter(function () {
-        //    console.log('entro');
-        //    $('.icon_menu').css('display', 'block')
-        //    $('.container_tvs').css('display', 'block')
-        //})
-        //$('.selector_video').mouseleave(function () {
-        //    console.log('salio');
-        //    $('.icon_menu').css('display', 'none')
-        //    $('.container_tvs').css('display', 'none')
-        //})
-
-
 
         function play(video_actual) {
             console.log('play', video_actual)
